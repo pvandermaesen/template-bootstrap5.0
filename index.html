@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- Javlo Template bootstrap-4.3.1 -->
+<html lang="${info.language}" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="unsafe-url">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>${info.pageTitle}<c:if test="${info.pageTitle != info.globalTitle}"> - ${info.globalTitle}</c:if></title>
+<link href="scss/bootstrap.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+<!--[if IE]>
+<link href="scss/javlo/ie.css" rel="stylesheet" />
+<![endif]-->
+<c:if test="${info.page.seoWeight == 0}">
+	<meta name="robots" content="noindex, nofollow" />
+</c:if>
+<c:if test="${info.page.seoWeight != 0}">
+	<meta name="robots" content="index, follow, noodp, noydir, notranslate, noarchive" />
+</c:if>
+<link rel="canonical" href="${info.currentCanonicalURL}" />
+<jsp:include page="social_meta.jsp" />
+<jsp:include page="meta.html" /><jsp:include page="meta.jsp" />
+<style type="text/css">
+@page { @top-center { content:'${info.globalTitle}';
+	
+}
+
+@bottom-center {
+	content: counter(page) "/" counter(pages);
+}
+}
+
+<c:if test="${info.template.colorPalette}">	
+<c:forEach var="col" items="${info.template.colorsMap}" varStatus="status">
+	.bg-template-${status.index+1} {
+		background-color: ${info.template.colorsMap[status.index]};
+	}    	
+  	</c:forEach>
+<c:set var="color" value="${info.template.colorsMap[status.index]}" />
+<c:set var="style" value='style="background-color: ${color.alphaHTMLCode}; color: ${color.text};"' />					
+</c:if>
+
+</style>
+<jsp:include page="lib/include_lib.jsp" /> 
+
+</head>
+<c:set var="bodyAreas" value="" />
+<c:forEach var='area' items='${info.area}'><c:set var="bodyAreas" value=" ${bodyAreas} area-${area}" /> </c:forEach>
+<c:set var="bodyStyle" value="" />
+<c:set var="bodyClass" value="" />
+<c:if test="${not empty info.imageBackground}">
+<c:set var="bodyStyle" value="background-image: url('${info.imageBackground.previewURL}');" />
+<c:set var="bodyClass" value="body-background" />
+</c:if>
+<body class="${bodyClass} section-${info.section} section-${info.sectionNumber} page-${info.pageName} ${bodyAreas} ${not empty info.logoRawUrl?'logo-img':'logo-text'}" id="top" style="${bodyStyle}">
+<c:if test="${not empty cookiesService && cookiesService.displayMessage}"><jsp:include page="cookies.jsp" /></c:if>
+	<div class="container nav-container">
+		<div class="row">
+			<div class="col">
+				<jsp:include page="jsp/menu.jsp" />
+			</div>
+			<c:if test="${not empty info.userName}">
+			<div class="col-sm-2 d-flex justify-content-center align-items-center" id="user-container">
+			<div id="user"></div>
+			</div>
+			</c:if>
+		</div>		
+	</div>
+	<c:if test="${info.template.config.bannerBottom}"><jsp:include page="banner.jsp" /></c:if>
+	<!-- Page Content -->
+	<div class="banner-container">
+		<div class="container">
+			<div id="banner-container">
+				<div id="banner">[banner]</div>
+			</div>
+	</div></div><div class="header-container">
+		<div class="container" id="header-container">
+			<div id="header">[header]</div>
+		</div>		
+	</div><div class="main-container"><div class="container">
+
+		<c:if test="${messages.globalMessage.needDisplay}">
+	 	<div class="pt-3 pb-1">
+			<div class="alert alert-${messages.globalMessage.bootstrapType}" role="alert">			
+				<span>${messages.globalMessage.messageDisplay}</span>
+			</div>
+		</div>
+		</c:if>
+
+		<div class="row">
+				<div id="sidebar-container" class="sidebar col-md-3">
+					<div id="sidebar">[sidebar]</div>
+				</div>
+				<div class="col-md">
+					<div id="content">[content]</div>
+				</div>
+				
+				<div id="contextzone-container" class="sidebar col-md-3">
+					<div id="contextzone">[contextzone]</div>
+				</div>
+		</div>
+	</div></div><div class="footer-container">
+		<footer class="container">
+			<div id="footer">
+				<p>Copyright &copy; Your Website 2018</p>
+			</div>
+		</footer>
+	</div>
+	<div id="backtotop">
+		<a title="${i18n.view['global.back-to-top']}" onclick="scrollTo('#top'); return false;" href="#top" class="btn btn-default btn-lg btn-primary"><i class="bi bi-arrow-up"></i></a>
+	</div>
+	
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/javlo.js?bld=##BUILD_ID##"></script>
+	<jsp:include page="main_lib/photoswipe/html.jsp" />
+	<script src="main_lib/_all_rec.js"></script>
+	<jsp:include page="end_body.jsp" />
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) {
+			jQuery('#backtotop').hide();		
+			$(window).on('load', function(){
+				initPhotoSwipeFromDOM('.clickable-multimedia a');
+			});
+			$(window).scroll(function() {
+				if (jQuery(this).scrollTop() > 25) {
+					$('#backtotop').show(300);
+				} else {
+					$('#backtotop').hide(300);
+				}
+			});
+		});
+	</script>
+	<div class="microdata hidden">
+		<jsp:include page="jsp/microdata/breadcrumb.jsp" />
+	</div>
+</body>
+
+</html>
+

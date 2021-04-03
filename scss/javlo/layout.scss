@@ -1,0 +1,38 @@
+@import 'variables.scss';
+
+.page-reference {
+	margin-bottom: $basic-bloc-separation;
+ }
+
+ ._area {
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ }
+
+.h100 {
+	display: flex;
+	flex-basis: auto;
+	align-items: stretch;
+}
+
+#user {
+	img {
+		max-height: 100px;
+	}
+	.global-image {
+		margin: 0;
+	}
+}
+
+body.body-background {
+	#main-nav .navbar, #main-nav .container, .dropdown-menu {
+		background-color: transparent;
+	}
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.col-sm-4 {
+		float: left;
+		width: 33.33%;
+	}
+}

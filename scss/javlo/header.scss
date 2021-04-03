@@ -1,0 +1,23 @@
+#header, #banner {
+	position: relative;
+	.global-image, figure {
+		margin: 0;
+	}
+}
+
+.search-item {
+	display: block;
+	padding: 3px 0;
+}
+
+#staticSearchResult {
+	margin: 3px 0;
+	width: 100%;
+	p {
+		margin: 0 0 5px 15px;
+		color: #000000;
+		font-size: 0.7em;
+		max-height: 55px;
+		overflow: hidden;
+	}
+}
