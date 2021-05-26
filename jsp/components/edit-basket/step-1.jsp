@@ -2,6 +2,9 @@
 %><%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"
 %><%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 <c:if test="${fn:length(basket.products) > 0}">
+<c:if test="${empty param.nobutton}">
+<form id="validate-basket-form" action="${info.currentURL}" method="post" role="form">
+</c:if>
 <table class="table">
 <thead>
 	<tr>
@@ -17,7 +20,7 @@
 <tr>
 		<td class="name">${product.name}</td>
 		<td class="price">${product.priceString}</td>
-		<td class="quantity">${product.quantity}</td>			
+		<td class="quantity"><input type="number" min="0" name="q-${product.id}" value="${product.quantity}" /></td>
 		<c:if test="${reduction}"><td class="reduction">${product.reductionString}</td></c:if>		
 		<td class="total-vat">${product.totalString}</td>
 </tr>
@@ -49,7 +52,6 @@
 </table>
 
 <c:if test="${empty param.nobutton}">
-<form id="validate-basket-form" action="${info.currentURL}" method="post" role="form">
 	<c:if test="${promo}">
 	<div class="form-group">
 		<label for="promo-code"><span>${i18n.view['ecom.promo-code']}</span></label>
@@ -58,15 +60,10 @@
 	</c:if>
 	<div class="form-group text-right">
 		<input type="hidden" name="comp-id" value="${compid}" />
-		<input type="hidden" name="webaction" value="basket.confirm" />
-		<input class="btn btn-primary" type="submit" value="${i18n.view['ecom.confirm-basket']}" /> 
+		<button class="btn btn-primary" type="submit" name="webaction" value="basket.confirm">${i18n.view['ecom.confirm-basket']}</button> 
 	</div>
-</form>
-
-<form id="reset-basket-form" action="${info.currentURL}" method="post" class="text-right">
 	<div>
-		<input type="hidden" name="webaction" value="basket.reset" />
-		<input class="reset btn btn-secondary btn-sm" type="submit" value="${i18n.view['ecom.reset-basket']}" /> 
+		<button class="reset btn btn-secondary btn-sm" name="webaction" value="basket.update">${i18n.view['ecom.update']}</button> 
 	</div>
 </form>
 </c:if>

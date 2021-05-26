@@ -7,7 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <title>${info.pageTitle}<c:if test="${info.pageTitle != info.globalTitle}"> - ${info.globalTitle}</c:if></title>
-<link href="scss/bootstrap.css" rel="stylesheet" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="scss/javlo/integration.css" rel="stylesheet" />
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -99,7 +100,7 @@
 				<div class="col-md">
 					<div id="content">[content]</div>
 				</div>
-				
+				<div class="p-20 p-lg-40 cms-radius-8 bg-accent text-white"><div class="text-sm-center text-lg-start"><div class="icon-position opacity-01"><div class="cms-icon-wrap"><i aria-hidden="true" class="cms-icon text-white cmsi cmsi-wind-socket" style=""></i></div></div><div class="cms-heading font-400 text-25 lh-35 mt-n10 text-white">Awards &amp; Milestones</div><div class="pt-15 font-700 mb-n8 empty-none">Benefiting from nearly 20 years experience.</div><div class="cms-link cms-link-overlay cms-overlay"> <a href="https://demo.cmssuperheroes.com/themeforest/solatec/awards/" target="_blank" class=" d-inline-block text- text-hover-"> <span class="cms-btn-content"><span class="cms-btn-text"></span></span> </a></div></div></div>
 				<div id="contextzone-container" class="sidebar col-md-3">
 					<div id="contextzone">[contextzone]</div>
 				</div>
@@ -111,29 +112,25 @@
 			</div>
 		</footer>
 	</div>
-	<div id="backtotop">
-		<a title="${i18n.view['global.back-to-top']}" onclick="scrollTo('#top'); return false;" href="#top" class="btn btn-default btn-lg btn-primary"><i class="bi bi-arrow-up"></i></a>
-	</div>
 	
-	<script src="lib/jquery-3.3.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 	<script src="js/javlo.js?bld=##BUILD_ID##"></script>
 	<jsp:include page="main_lib/photoswipe/html.jsp" />
 	<script src="main_lib/_all_rec.js"></script>
 	<jsp:include page="end_body.jsp" />
+
+	<div id="backtotop">
+		<a title="${i18n.view['global.back-to-top']}" onclick="scrollTo('#top'); return false;" href="#top" class="btn btn-default btn-lg btn-primary"><i class="bi bi-arrow-up"></i></a>
+	</div>	
 	<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) {
-			jQuery('#backtotop').hide();		
-			$(window).on('load', function(){
-				initPhotoSwipeFromDOM('.clickable-multimedia a');
-			});
-			$(window).scroll(function() {
-				if (jQuery(this).scrollTop() > 25) {
-					$('#backtotop').show(300);
+			document.getElementById('backtotop').style.display="none";
+			initPhotoSwipeFromDOM('.clickable-multimedia a');
+			window.addEventListener('scroll', function(e) {
+				if (this.scrollTop > 25) {
+					document.getElementById('backtotop').style.display="block";
 				} else {
-					$('#backtotop').hide(300);
+					document.getElementById('backtotop').style.display="none";
 				}
 			});
 		});

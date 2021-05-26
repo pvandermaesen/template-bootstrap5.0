@@ -60,22 +60,6 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%><div class="car
 						<input type="submit" class="btn btn-primary" value="${i18n.view['global.send']}" />
 					</div>
 				</form>
-				<script>
-					document.addEventListener("DOMContentLoaded", function(event) { 
-						type: $(this).attr('method'),
-						$('#var emailForm').on("submit", function()  {
-							var data = $(this).serialize();
-							$.ajax({
-								url: $(this).attr('action'),
-								data: data,
-								success: function(json){
-									//console.log(json);
-								}
-							});
-							return false;
-						});
-					});
-				</script>
 				</div>
 			</div><div class="d-logged"> 
 				<c:url var="logoutUrl" value="${info.currentURL}" context="/">
@@ -88,22 +72,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%><div class="car
 	<c:set var="registerPage" value="${info.pageByName['register']}" />
 	<c:if test="${not empty registerPage}">
 		<div class="d-none-logged">
-			<c:if test="${globalContext.specialConfig.createAccountWithToken}">
-				<a class="register card-footer" href="#${param.prefixId}create-account-with-email" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="${param.prefixId}forget-password-email">${i18n.view['form.create-account']}</a>
-				<div class="collapse card-body" id="${param.prefixId}create-account-with-email">
-					<form class="ajax-form" name="login" method="post" action="${info.currentAjaxURL}" id="${param.prefixId}create-account-with-email-form" data-onsubmit="onSubmitMailRegistration${param.prefixId}">
-						<div class="form-group">							
-							<input name="webaction" value="user.createuserwidthemail" type="hidden" />
-							<label class="sr-only" for="menu-forget-email-ajax">${i18n.view['form.youremail']}</label>
-							<div class="input"><input class="form-control" id="menu-forget-email-ajax" type="email" name="email" value="" placeholder="${i18n.view['form.youremail']}" /></div>
-						</div>
-						<div class="action">
-							<div> </div>
-							<input type="submit" class="btn btn-primary" value="${i18n.view['global.send']}" />
-						</div>
-					</form>
-				</div>
-			</c:if><c:if test="${!globalContext.specialConfig.createAccountWithToken}">
+			<c:if test="${!globalContext.specialConfig.createAccountWithToken}">
 				<a class="register card-footer" href="${registerPage.url}">${i18n.view['form.create-account']}</a>
 			</c:if>
 		</div>
@@ -136,15 +105,6 @@ setInterval(function(){
 	formLogin${param.prefixId}(null);	    
 }, 3000);
 </c:if>
-function onSubmitMailRegistration${param.prefixId}(json) {
-	var msg="${vi18n["registration.message.mail-send"]}";
-	var msgType="info";
-	if (json['messageText'] != null) {
-		msg=json['messageText'];
-		msgType=json['messageType'];
-	}	
-	$('#${param.prefixId}create-account-with-email-form').html('<div class="alert alert-'+msgType+'" role="alert">'+msg+'</div>');
-}
 function formLogin${param.prefixId}(form) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {

@@ -10,13 +10,24 @@
 	padding: 3px 0;
 }
 
+#staticSearchResult.result {
+	margin-top: 2rem;
+}
+
 #staticSearchResult {
-	margin: 3px 0;
 	width: 100%;
+	a {
+		text-decoration: none;
+		margin: -1rem;
+		padding: 1rem;
+	}
+	a:hover {
+		background-color: #eee;
+	}
 	p {
 		margin: 0 0 5px 15px;
 		color: #000000;
-		font-size: 0.7em;
+		font-size: 0.8em;
 		max-height: 55px;
 		overflow: hidden;
 	}

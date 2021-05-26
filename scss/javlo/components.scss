@@ -273,7 +273,7 @@ a.external-link {
       font-size: 18px;
       line-height: 1.4;
       bottom: auto;
-      padding: 15px;      
+      padding: 15px;
 
       p {
         text-align: center;
@@ -354,6 +354,7 @@ ul.filter-list li.dynamic-component {
 .smart-form {
   overflow: hidden;
   margin-bottom: 25px;
+
   .radio {
     .list-label-size-l {
       .form-check-inline {
@@ -364,7 +365,7 @@ ul.filter-list li.dynamic-component {
         border-top: 1px #ccc solid;
       }
     }
-  }  
+  }
 }
 
 .smart-form .radio,
@@ -771,6 +772,12 @@ li .file a {
   }
 }
 
+.global-image.full,
+.global-image.banner {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 .link-file-text:hover {
   color: #707070;
   text-decoration: none;
@@ -989,20 +996,20 @@ li .file a {
 
 .citation {
 
-    margin: 15px auto;
-    font-family: Open Sans;
-    color: #555555;
-    padding: 1.2em 30px 1.2em 75px;
-    border-left: 8px solid #28a744;
-    line-height: 1.6;
-    position: relative;
-	background: #EDEDED;
-	
+  margin: 15px auto;
+  font-family: Open Sans;
+  color: #555555;
+  padding: 1.2em 30px 1.2em 75px;
+  border-left: 8px solid #28a744;
+  line-height: 1.6;
+  position: relative;
+  background: #EDEDED;
+
 
   .well {
-	  background-color: transparent;
-	  margin: 0;
-	}
+    background-color: transparent;
+    margin: 0;
+  }
 
   .title {
     font-weight: bold;
@@ -1677,4 +1684,9 @@ option.title {
     font-size: 0.9em;
     font-style: italic;
   }
+}
+
+.next-page {
+  display: flex;
+  justify-content: flex-end;
 }

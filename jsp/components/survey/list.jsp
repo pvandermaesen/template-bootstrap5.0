@@ -16,14 +16,16 @@
 					<i class="undone-item far fa-square text-gray-300"></i>
 					<i class="done-item far fa-check-square text-gray-300"></i>
 				</div>
-				<div class="col-sm mr-2 d-flex justify-content-center">
-					<div class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">${question.displayLabel}</div>
+				<div class="col-sm mr-2 d-flex">
+					<div class="text-xs font-weight-bold text-success text-uppercase mb-1">${question.displayLabel}</div>
 				</div>
-				<div class="col-sm-auto d-flex justify-content-center">					
+				<div class="col-sm-auto d-flex">					
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
 					  <c:forEach var="response" items="${question.responses}">
-					  <label class="btn btn-secondary">
-					    <input type="radio" name="${question.inputName}" id="r${response.number}" value="${response.label}">${response.label}</label>
+					    <input type="radio" class="btn-check" name="${question.inputName}" id="r${response.number}-${question.number}" autocomplete="off">
+						<label class="btn btn-outline-secondary" for="r${response.number}-${question.number}">${response.label}</label>
+					    
+					    
 					  </c:forEach>
 					</div>
 				</div>
@@ -33,7 +35,9 @@
 </c:forEach>
 </div>
 
+<div class="d-flex justify-content-end">
 <button class="btn btn-primary btn-block mb-3 disabled" aria-disabled="true" id="btn-send" disabled>${sendLabel}</button>
+</div>
 
 </form>
 
