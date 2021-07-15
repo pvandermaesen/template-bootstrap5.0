@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 %><%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"
-%><%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
+%><%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %><!-- STEP 1 -->
 <c:if test="${fn:length(basket.products) > 0}">
 <c:if test="${empty param.nobutton}">
 <form id="validate-basket-form" action="${info.currentURL}" method="post" role="form">

@@ -43,7 +43,7 @@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%><div class="car
 						<label class="form-check-label" for="menu-autologin">${i18n.view['login.auto']}</label>
 					</div>
 					<div class="action">
-					<a class="forget" data-toggle="collapse" href="#${param.prefixId}forget-password-email" role="button" aria-expanded="false" aria-controls="${param.prefixId}forget-password-email">
+					<a class="forget" data-bs-toggle="collapse" href="#${param.prefixId}forget-password-email" role="button" aria-expanded="false" aria-controls="${param.prefixId}forget-password-email">
 						${i18n.view['user.message.forget-password']}
 					</a>
 					<input type="submit" class="btn btn-primary" value="${i18n.view['form.submit']}" />

@@ -22,10 +22,8 @@
 				<div class="col-sm-auto d-flex">					
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
 					  <c:forEach var="response" items="${question.responses}">
-					    <input type="radio" class="btn-check" name="${question.inputName}" id="r${response.number}-${question.number}" autocomplete="off">
+					    <input type="radio" class="btn-check" name="${question.inputName}" id="r${response.number}-${question.number}" autocomplete="off" value="${response.number}">
 						<label class="btn btn-outline-secondary" for="r${response.number}-${question.number}">${response.label}</label>
-					    
-					    
 					  </c:forEach>
 					</div>
 				</div>

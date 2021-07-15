@@ -16,7 +16,7 @@ taglib
 <nav
 	class="navbar navbar-expand-md ${param._menufix?'fixed-top':''} ${param._menudark?'bg-dark navbar-dark':param._menulight?'bg-light navbar-light':""}">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#"><jsp:include page="logo.jsp" /></a>
+		<jsp:include page="logo.jsp" />
 		<button class="navbar-toggler collapsed" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 			aria-controls="navbarCollapse" aria-expanded="false"

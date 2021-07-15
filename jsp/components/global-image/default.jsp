@@ -78,7 +78,7 @@
 </c:otherwise>
 </c:choose>
 </div></div>
-<c:if test="${empty param.noswipe && !info.device.pdf}">
+<c:if test="${empty param.noswipe && !info.device.pdf && link != '#'}">
 <script>document.addEventListener("DOMContentLoaded", function(event) {
 	initPhotoSwipeFromDOM('.img-${comp.id} a');	
 });</script></c:if>
